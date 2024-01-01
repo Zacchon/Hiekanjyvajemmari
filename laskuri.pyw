@@ -28,10 +28,10 @@ style = ttk.Style()
 style.theme_use("clam")
 style.configure("Kirkas.TButton", background="white", foreground="black")
 style.configure("Musta.TButton", background="black", foreground="white")
-style.configure("Ruskea.TButton", background="brown", foreground="black")
 style.configure("Punainen.TButton", background="red", foreground="black")
+style.configure("Kellertävä.TButton", background="peachpuff", foreground="black")
 
-varit = ["Kirkas", "Musta", "Ruskea", "Punainen"]
+varit = ["Kirkas", "Musta", "Punainen", "Kellertävä"]
 laskurit = {v: 0 for v in varit}
 labels = {}
 
