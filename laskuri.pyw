@@ -26,20 +26,23 @@ root.grid_anchor("center")
 
 style = ttk.Style()
 style.theme_use("clam")
-style.configure("Kirkas.TButton", background="white", foreground="black")
-style.configure("Musta.TButton", background="black", foreground="white")
-style.configure("Punainen.TButton", background="red", foreground="black")
+style.configure("Kirkas.TButton", background="#efefff", foreground="black")
+style.configure("Valkea.TButton", background="white", foreground="black")
 style.configure("Kellertävä.TButton", background="peachpuff", foreground="black")
+style.configure("Punainen.TButton", background="red", foreground="black")
+style.configure("Musta.TButton", background="black", foreground="white")
 
-varit = ["Kirkas", "Musta", "Punainen", "Kellertävä"]
+varit = ["Kirkas", "Valkea", "Kellertävä", "Punainen", "Musta"]
 laskurit = {v: 0 for v in varit}
 labels = {}
+
+koko = tk.IntVar(root)
 
 def lisaa_laskuriin(vari):
     laskurit[vari] += 1
     labels[vari].configure(text=laskurit[vari])
     timestamp = datetime.now()
-    data.append({"datetime": timestamp, "väri": vari})
+    data.append({"datetime": timestamp, "väri": vari, "koko": koko.get()})
     print(timestamp)
     print(laskurit)
 
@@ -49,6 +52,14 @@ for idx, vari in enumerate(varit):
     label_vari = ttk.Label(root, text=laskurit[vari])
     label_vari.grid(row=idx, column=1, padx=6)
     labels[vari] = label_vari
+
+radio_koko1 = tk.Radiobutton(root, text="Koko 1", value=1, variable=koko)
+radio_koko2 = tk.Radiobutton(root, text="Koko 2", value=2, variable=koko)
+radio_koko3 = tk.Radiobutton(root, text="Koko 3", value=3, variable=koko)
+
+radio_koko1.grid(row=1, column=2)
+radio_koko2.grid(row=2, column=2)
+radio_koko3.grid(row=3, column=2)
 
 def on_exit():
     if messagebox.askokcancel("Sulje", "Sulje ohjelma?"):
